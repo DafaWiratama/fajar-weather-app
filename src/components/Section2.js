@@ -5,7 +5,9 @@ function Section2() {
     <section className="wrapper-section2">
       <h1>Today&apos;s weather</h1>
       <div className="card-section2">
-        <p>Card weather</p>
+        <p>Jam</p>
+        <p>ICON</p>
+        <p>14*</p>
       </div>
     </section>
   );
