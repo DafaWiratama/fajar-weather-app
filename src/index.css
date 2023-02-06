@@ -4,8 +4,127 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #8f44fd;
+  color: white;
+  transition: 0.04s;
 }
 
-:root {
-  --myFont: "Nunito", sans-serif;
+.wrapper-section1,
+.wrapper-section2,
+.wrapper-section3 {
+  width: auto;
+  height: auto;
+  padding: 20px;
+  margin-bottom: 90px;
+}
+
+.wrapper-title {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-family: "Nunito", sans-serif;
+}
+
+.wrapper-weather {
+  display: flex;
+  width: 100%;
+  height: 180px;
+  margin-top: 20px;
+}
+
+.weather {
+  display: flex;
+  width: 100%;
+  height: 180px;
+}
+
+.left,
+.right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "Nunito", sans-serif;
+}
+
+.right {
+  flex-direction: column;
+  border-left: 1px solid white;
+}
+
+.top,
+.bottom {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.card-section2,
+.card-section3 {
+  width: 13%;
+  padding: 0.8em 0;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.45);
+  font-size: 1.125em;
+  text-align: center;
+}
+
+.card-section3 {
+  width: 100%;
+  display: flex;
+}
+
+.left-section3 {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-evenly;
+  width: 40%;
+}
+
+.right-section3 {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 500px) {
+  .wrapper-weather {
+    flex-wrap: wrap;
+  }
+  .weather {
+    display: block;
+  }
+  .left,
+  .right,
+  .top,
+  .bottom {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  .right {
+    border: none;
+  }
+
+  .wrapper-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wrapper-title button {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .card-section2 {
+    width: 40%;
+  }
 }
