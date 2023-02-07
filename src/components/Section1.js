@@ -25,7 +25,7 @@ function Section1({ city }) {
 
         <div className="dropdown">
           <button onClick={handleOpenBtnSelect}>
-            <p>Choose City</p>
+            {selected ? <p>{selected}</p> : <p>Choose City</p>}
             <UilAngleDown
               className={`icon-btn-select ${openBtn ? "open-icon" : ""}`}
             />
