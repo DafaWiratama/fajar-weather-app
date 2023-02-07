@@ -14,7 +14,7 @@ body {
 .wrapper-section3 {
   width: auto;
   height: auto;
-  padding: 20px;
+  padding: 0 20px;
   margin-bottom: 90px;
 }
 
@@ -64,6 +64,90 @@ body {
   justify-content: space-around;
 }
 
+.dropdown {
+  position: relative;
+  perspective: 200px;
+  gap: 10px;
+  width: 150px;
+  height: 40px;
+  color: #f9f9f9;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 5px;
+}
+
+.dropdown > button {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.45);
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+  color: #f9f9f9;
+  background: transparent;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+
+.menu-dropdown {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  transform-origin: 100% 0;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.8);
+  transition: 0.4s;
+  scale: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  font-family: "Nunito", sans-serif;
+}
+
+.open {
+  scale: 1;
+  right: 0;
+  top: 50px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-dropdown > button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  width: 100%;
+  height: 40px;
+  color: #f9f9f9;
+  background: transparent;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+}
+
+.menu-dropdown > button:hover {
+  background: rgba(0, 0, 0, 1);
+}
+
+.icon-btn-select {
+  width: 20px;
+  height: 20px;
+  transition: 0.4s;
+}
+
+.open-icon {
+  rotate: -180deg;
+}
+
 .card-section2,
 .card-section3 {
   width: 13%;
@@ -99,9 +183,15 @@ body {
   .wrapper-weather {
     flex-wrap: wrap;
   }
+
   .weather {
     display: block;
   }
+
+  .wrapper-section2 {
+    margin-top: 170px;
+  }
+
   .left,
   .right,
   .top,
@@ -117,11 +207,6 @@ body {
   .wrapper-title {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .wrapper-title button {
-    width: 100%;
-    margin: 10px 0;
   }
 
   .card-section2 {

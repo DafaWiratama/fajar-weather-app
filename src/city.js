@@ -1,4 +1,4 @@
-export const cities = [
+export const city = [
   "Depok",
   "Jakarta",
   "Bandung",

@@ -1,6 +1,20 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { UilAngleDown } from "@iconscout/react-unicons";
 
-function Section1(props) {
+function Section1({ city }) {
+  const [selected, setSelected] = useState(null);
+  const [openBtn, setOpenBtn] = useState(false);
+
+  const handleOpenBtnSelect = () => setOpenBtn(!openBtn);
+  const handleSelectCity = (e) => {
+    setSelected(e.target.name);
+    setOpenBtn(false);
+  };
+
+  useEffect(() => {
+    console.log(selected);
+  }, [selected]);
+
   return (
     <section className="wrapper-section1">
       <div className="wrapper-title">
@@ -9,7 +23,21 @@ function Section1(props) {
           <p>Sunday, 4th Agust</p>
         </span>
 
-        <button>Dropdowns</button>
+        <div className="dropdown">
+          <button onClick={handleOpenBtnSelect}>
+            <p>Choose City</p>
+            <UilAngleDown
+              className={`icon-btn-select ${openBtn ? "open-icon" : ""}`}
+            />
+          </button>
+          <div className={`menu-dropdown ${openBtn ? "open" : null}`}>
+            {city.map((item, idx) => (
+              <button key={idx} name={item} onClick={handleSelectCity}>
+                {item}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
       <div className="wrapper-weather">
         <div className="weather">

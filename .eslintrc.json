@@ -21,6 +21,8 @@
     "react/react-in-jsx-scope": "off",
     "indent": ["error", 2],
     "quotes": ["error", "double"],
+    "object-curly-spacing": ["error", "always"],
+    "react/prop-types": 0,
     "require-jsdoc": [
       "error",
       {
