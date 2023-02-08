@@ -77,7 +77,7 @@ function Section1(props) {
                 <p>
                   {Object.keys(weatherNow).length !== 0 &&
                     weatherNow.main.humidity}{" "}
-                  &deg;
+                  &deg; 💦
                 </p>
                 <p>Humidity</p>
               </div>
