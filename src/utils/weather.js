@@ -8,6 +8,6 @@ export const getCityApi = (city) => {
 };
 
 export const getWeatherApi = (lat, lon) => {
-  const url = `${host}/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}`;
+  const url = `${host}/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${key}`;
   return axios.get(url);
 };

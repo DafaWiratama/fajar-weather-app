@@ -27,6 +27,7 @@ body {
 
 .title {
   font-family: "Nunito", sans-serif;
+  margin-left: 20px;
 }
 
 .wrapper-weather {
@@ -66,6 +67,7 @@ body {
 
 .dropdown {
   position: relative;
+  margin-right: 20px;
   perspective: 200px;
   gap: 10px;
   width: 280px;
@@ -185,6 +187,41 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.wrapper-nodata {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.wrapper-nodata > p {
+  font-family: "Nunito", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #f9f9f9;
+}
+
+.wrapper-nodata > img {
+  width: 30%;
+  height: 30%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.wrapper-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.wrapper-data > p {
+  margin: 5px 0;
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
 }
 
 @media screen and (max-width: 500px) {

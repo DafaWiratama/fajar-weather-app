@@ -36,6 +36,7 @@
       }
     ],
     "no-undef": 0,
-    "max-len": 0
+    "max-len": 0,
+    "prefer-const": 0
   }
 }

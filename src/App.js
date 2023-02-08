@@ -5,6 +5,10 @@ import { getCityApi, getWeatherApi } from "./utils/weather";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { MagnifyingGlass } from "react-loader-spinner";
+import noData from "./assets/nodata.png";
+import moment from "moment/moment";
+import { city } from "./city";
+import { UilAngleDown } from "@iconscout/react-unicons";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,6 +17,9 @@ function App() {
   const [isCity, setIsCity] = useState([]);
   const [dataCity, setDataCity] = useState({});
   const [dataList, setDataList] = useState([]);
+  const date = moment();
+  const day = date.format("dddd");
+  const currentDate = date.format("MMMM Do YYYY");
 
   const handleOpenBtnSelect = () => setOpenBtn(!openBtn);
 
@@ -27,10 +34,10 @@ function App() {
         setIsLoading(true);
 
         const res = await getCityApi(selected);
-        setTimeout(() => setIsLoading(false), [1000]);
+        setTimeout(() => setIsLoading(false), [500]);
         setIsCity(res.data[0]);
       } catch (err) {
-        setTimeout(() => setIsLoading(false), [1000]);
+        setTimeout(() => setIsLoading(false), [500]);
         return toast.error("Sorry, an error occurred", {
           position: "bottom-center",
           autoClose: 3000,
@@ -90,17 +97,44 @@ function App() {
         </div>
       ) : (
         <>
-          <Section1
-            selected={selected}
-            handleSelected={handleSelectCity}
-            openBtn={openBtn}
-            handleBtnCity={handleOpenBtnSelect}
-            isCity={isCity}
-            dataCity={dataCity}
-            dataList={dataList}
-          />
-          <Section2 />
-          <Section3 />
+          <div className="wrapper-title">
+            <span className="title">
+              <h1>{selected ? selected : "-"}</h1>
+              <p>{`${day}, ${currentDate}`}</p>
+            </span>
+
+            <div className="dropdown">
+              <button onClick={handleOpenBtnSelect}>
+                {selected ? <p>{selected}</p> : <p>Choose City</p>}
+                <UilAngleDown
+                  className={`icon-btn-select ${openBtn ? "open-icon" : ""}`}
+                />
+              </button>
+              <div className={`menu-dropdown ${openBtn ? "open" : null}`}>
+                {Object.keys(city).map((item, idx) => (
+                  <button
+                    key={idx}
+                    name={Object.values(city)[idx]}
+                    onClick={handleSelectCity}>
+                    {Object.values(city)[idx]}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {dataList.length !== 0 || Object.values(dataCity).length !== 0 ? (
+            <>
+              <Section1 dataList={dataList} dataCity={dataCity} />
+              <Section2 />
+              <Section3 />
+            </>
+          ) : (
+            <div className="wrapper-nodata">
+              <img src={noData} alt="no_data" />
+              <p>No Data</p>
+            </div>
+          )}
         </>
       )}
       <ToastContainer
