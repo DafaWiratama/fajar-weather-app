@@ -32,6 +32,7 @@ function Section1(props) {
             <img
               src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
               alt="img"
+              width={150}
             />
             <div className="wrapper-data">
               <h1>
@@ -77,7 +78,7 @@ function Section1(props) {
                 <p>
                   {Object.keys(weatherNow).length !== 0 &&
                     weatherNow.main.humidity}{" "}
-                  &deg; 💦
+                  💦
                 </p>
                 <p>Humidity</p>
               </div>

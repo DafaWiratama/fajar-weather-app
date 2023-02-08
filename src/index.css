@@ -14,8 +14,18 @@ body {
 .wrapper-section3 {
   width: auto;
   height: auto;
-  padding: 0 20px;
-  margin-bottom: 90px;
+  padding: 0 100px;
+  font-family: "Nunito", sans-serif;
+}
+
+.wrapper-card-section2 {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
 }
 
 .wrapper-title {
@@ -163,6 +173,7 @@ body {
 .card-section3 {
   width: 100%;
   display: flex;
+  margin: 50px 0;
 }
 
 .left-section3 {
@@ -224,7 +235,23 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
+.card-section2 > p {
+  margin: 0;
+}
+
 @media screen and (max-width: 500px) {
+  .title {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .dropdown {
+    width: 90%;
+    margin-right: 0;
+  }
+
   .wrapper-weather {
     flex-wrap: wrap;
   }
@@ -233,8 +260,28 @@ body {
     display: block;
   }
 
-  .wrapper-section2 {
-    margin-top: 170px;
+  .wrapper-section1 {
+    padding: 0;
+  }
+
+  .wrapper-section2,
+  .wrapper-section3 {
+    margin-top: 200px;
+    text-align: center;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wrapper-section3 {
+    margin-top: 30px;
+  }
+
+  .wrapper-nodata {
+    margin-top: 50px;
   }
 
   .left,
@@ -242,7 +289,7 @@ body {
   .top,
   .bottom {
     width: 100%;
-    padding: 20px 0;
+    padding: 10px 0;
   }
 
   .right {
@@ -251,10 +298,19 @@ body {
 
   .wrapper-title {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .card-section2 {
     width: 40%;
+  }
+
+  .card-section3 {
+    width: 89%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
   }
 }

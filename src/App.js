@@ -17,6 +17,7 @@ function App() {
   const [isCity, setIsCity] = useState([]);
   const [dataCity, setDataCity] = useState({});
   const [dataList, setDataList] = useState([]);
+  const [dataWeather, setDataWeather] = useState([]);
   const date = moment();
   const day = date.format("dddd");
   const currentDate = date.format("MMMM Do YYYY");
@@ -63,7 +64,23 @@ function App() {
           const res = await getWeatherApi(lat, lon);
           const { city, list } = res.data;
           setDataCity(city);
-          setDataList(list);
+          setDataWeather(list);
+
+          if (list.length !== 0) {
+            const dateNow = moment().format("L");
+            let weatherTmp = [];
+            list.forEach((item) => {
+              const time = item.dt_txt;
+              const dateTmp = moment(time).format("L");
+              if (dateNow === dateTmp) {
+                weatherTmp.push(item);
+              }
+              if (time === weatherTmp[0]) {
+                setIcon(item.weather[0].icon);
+              }
+            });
+            setDataList(weatherTmp);
+          }
         } catch (err) {
           return toast.error("Sorry, an error occurred", {
             position: "bottom-center",
@@ -80,6 +97,7 @@ function App() {
       getWeather();
     }
   }, [isCity]);
+
   return (
     <>
       {isLoading ? (
@@ -126,8 +144,8 @@ function App() {
           {dataList.length !== 0 || Object.values(dataCity).length !== 0 ? (
             <>
               <Section1 dataList={dataList} dataCity={dataCity} />
-              <Section2 />
-              <Section3 />
+              <Section2 data={dataList} />
+              <Section3 data={dataWeather} />
             </>
           ) : (
             <div className="wrapper-nodata">
