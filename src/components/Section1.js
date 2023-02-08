@@ -1,39 +1,50 @@
-import { useEffect, useState } from "react";
+import moment from "moment/moment";
+import { city } from "../city";
 import { UilAngleDown } from "@iconscout/react-unicons";
+import { useEffect, useState } from "react";
 
-function Section1({ city }) {
-  const [selected, setSelected] = useState(null);
-  const [openBtn, setOpenBtn] = useState(false);
+function Section1(props) {
+  const {
+    handleSelected,
+    selected,
+    openBtn,
+    handleBtnCity,
 
-  const handleOpenBtnSelect = () => setOpenBtn(!openBtn);
-  const handleSelectCity = (e) => {
-    setSelected(e.target.name);
-    setOpenBtn(false);
-  };
+    dataList,
+  } = props;
+  const date = moment();
+  const day = date.format("dddd");
+  const currentDate = date.format("MMMM Do YYYY");
+  const [data, setData] = useState("");
 
   useEffect(() => {
-    console.log(selected);
-  }, [selected]);
+    if (dataList.length !== 0) {
+      setData(dataList[0].weather[0].icon);
+    }
+  }, [dataList]);
 
   return (
     <section className="wrapper-section1">
       <div className="wrapper-title">
         <span className="title">
-          <h1>Jakarta, Indonesia</h1>
-          <p>Sunday, 4th Agust</p>
+          <h1>{selected ? selected : "-"}</h1>
+          <p>{`${day}, ${currentDate}`}</p>
         </span>
 
         <div className="dropdown">
-          <button onClick={handleOpenBtnSelect}>
+          <button onClick={handleBtnCity}>
             {selected ? <p>{selected}</p> : <p>Choose City</p>}
             <UilAngleDown
               className={`icon-btn-select ${openBtn ? "open-icon" : ""}`}
             />
           </button>
           <div className={`menu-dropdown ${openBtn ? "open" : null}`}>
-            {city.map((item, idx) => (
-              <button key={idx} name={item} onClick={handleSelectCity}>
-                {item}
+            {Object.keys(city).map((item, idx) => (
+              <button
+                key={idx}
+                name={Object.values(city)[idx]}
+                onClick={handleSelected}>
+                {Object.values(city)[idx]}
               </button>
             ))}
           </div>
@@ -42,7 +53,10 @@ function Section1({ city }) {
       <div className="wrapper-weather">
         <div className="weather">
           <div className="left">
-            <p>ICON WEATHER</p>
+            <img
+              src={`https://openweathermap.org/img/wn/${data}@2x.png`}
+              alt="img"
+            />
             <p>21 DRAJAT</p>
           </div>
           <div className="right">
