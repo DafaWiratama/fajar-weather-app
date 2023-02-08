@@ -301,6 +301,10 @@ body {
     align-items: center;
   }
 
+  .wrapper-card-section2 {
+    margin-top: 0;
+  }
+
   .card-section2 {
     width: 40%;
   }
@@ -308,9 +312,31 @@ body {
   .card-section3 {
     width: 89%;
     display: flex;
-    flex-direction: column;
+
     align-items: center;
     justify-content: center;
     margin-top: 0;
+  }
+
+  .left-section3 {
+    flex-direction: column;
+  }
+
+  .left-section3 > p {
+    margin: 0;
+  }
+
+  .left-section3 > p:nth-child(1) {
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  .right-section3 {
+    /* gap: 20px; */
+    justify-content: center;
+  }
+
+  .right-section3 > div {
+    width: 100px;
   }
 }

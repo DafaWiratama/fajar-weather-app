@@ -33,14 +33,15 @@ function Section3({ data }) {
         weather.map((item, idx) => (
           <div key={idx} className="card-section3">
             <div className="left-section3">
+              <p>{moment(item.dt_txt).format("dddd")}</p>
+              <p>{`${moment(item.dt_txt).date()} / ${
+                moment(item.dt_txt).month() + 1
+              }`}</p>
               <img
                 src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
                 alt="icon"
                 height={100}
               />
-              <p>{`${moment(item.dt_txt).date()} / ${
-                moment(item.dt_txt).month() + 1
-              }`}</p>
             </div>
             <div className="right-section3">
               <div className="low">
