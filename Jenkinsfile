@@ -20,11 +20,11 @@ pipeline {
                     sh """#!/busybox/sh
 
                         /kaniko/executor \
-                        --cleanup \
-                        --target=runner \
+                        --reproducible \
+                        --ignore-path="/busybox" \
+                        --caching=true \
                         --compressed-caching=false \
                         --log-format=text \
-                        --reproducible \
                         --context `pwd` \
                         --dockerfile `pwd`/Dockerfile \
                         --use-new-run \
