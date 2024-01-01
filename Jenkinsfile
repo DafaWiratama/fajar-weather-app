@@ -7,7 +7,7 @@ pipeline {
                 container('kaniko') {
                     script {
                         echo "Building Docker image using Kaniko..."
-                        sh "/kaniko/executor -f `pwd`/Dockerfile -c `pwd` --cache=true --destination=harbor.jaya-makmur.cloud/fajar/weather-app"
+                        sh "/kaniko/executor -f `pwd`/Dockerfile -c `pwd` --destination=harbor.jaya-makmur.cloud/fajar/weather-app"
                         echo "Docker image build completed."
                     }
                 }
