@@ -6,7 +6,13 @@ pipeline {
             steps {
                 container('kaniko') {
                     script {
-                        sh "/kaniko/executor -f `pwd`/Dockerfile -c `pwd` --destination=harbor.jaya-makmur.cloud/fajar/weather-app:latest"
+                        sh """
+                            /kaniko/executor
+                            -c `pwd`
+                            -f `pwd`/Dockerfile
+                            --use-new-run
+                            --destination=harbor.jaya-makmur.cloud/fajar/weather-app:latest
+                        """
                     }
                 }
             }
