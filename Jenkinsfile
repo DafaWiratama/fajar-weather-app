@@ -2,18 +2,6 @@ pipeline {
     agent { label 'kaniko'}
 
     stages {
-        stage("Cleanup Workspace") {
-            steps {
-                cleanWs()
-            }
-        }
-
-        stage("Checkout from SCM"){
-            steps {
-                git url: 'https://github.com/DafaWiratama/fajar-weather-app.git', branch: 'main'
-            }
-        }
-
         stage('Build and push to registry') {
             steps {
                 container(name:'kaniko', shell: '/busybox/sh') {
@@ -22,8 +10,8 @@ pipeline {
                         /kaniko/executor \
                         --reproducible \
                         --ignore-path="/busybox" \
-                        --caching=true \
-                        --compressed-caching=false \
+                        --ignore-path="/kaniko" \
+                        --cache=true \
                         --log-format=text \
                         --context `pwd` \
                         --dockerfile `pwd`/Dockerfile \
