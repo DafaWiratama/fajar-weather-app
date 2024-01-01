@@ -8,7 +8,6 @@ pipeline {
                     script {
                         sh """
                             /kaniko/executor \
-                            --registry-mirror https://harbor.jaya-makmur.cloud/docker \
                             --context `pwd` \
                             --dockerfile `pwd`/Dockerfile \
                             --use-new-run \
