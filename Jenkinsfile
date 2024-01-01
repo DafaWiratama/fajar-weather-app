@@ -16,19 +16,18 @@ pipeline {
 
         stage('Build and push to registry') {
             steps {
-                container('kaniko') {
-                    script {
-                        sh """
-                            /kaniko/executor \
-                            --compressed-caching=false \
-                            --log-format=text \
-                            --reproducible \
-                            --context `pwd` \
-                            --dockerfile `pwd`/Dockerfile \
-                            --use-new-run \
-                            --destination=harbor.jaya-makmur.cloud/fajar/weather-app:latest
-                        """
-                    }
+                container(name:'kaniko', shell: '/busybox/sh') {
+                    sh """#!/busybox/sh
+
+                        /kaniko/executor \
+                        --compressed-caching=false \
+                        --log-format=text \
+                        --reproducible \
+                        --context `pwd` \
+                        --dockerfile `pwd`/Dockerfile \
+                        --use-new-run \
+                        --destination=harbor.jaya-makmur.cloud/fajar/weather-app:latest
+                    """
                 }
             }
         }
