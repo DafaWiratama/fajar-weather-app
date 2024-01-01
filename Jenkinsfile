@@ -10,7 +10,6 @@ pipeline {
                             /kaniko/executor \
                             --compressed-caching=false \
                             --log-format=text \
-                            --no-push \
                             --reproducible \
                             --context `pwd` \
                             --dockerfile `pwd`/Dockerfile \
