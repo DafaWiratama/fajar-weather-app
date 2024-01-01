@@ -10,7 +10,7 @@ pipeline {
 
         stage("Checkout from SCM"){
             steps {
-                git url: 'https://github.com/dmancloud/complete-prodcution-e2e-pipeline', branch: 'main'
+                git url: 'https://github.com/DafaWiratama/fajar-weather-app.git', branch: 'main'
             }
         }
 
