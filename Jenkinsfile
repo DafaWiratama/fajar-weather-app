@@ -8,7 +8,6 @@ pipeline {
                     script {
                         sh """
                             /kaniko/executor \
-                            --cache=true \
                             --compressed-caching=false \
                             --log-format=text \
                             --no-push \
