@@ -20,6 +20,7 @@ pipeline {
                     sh """#!/busybox/sh
 
                         /kaniko/executor \
+                        --target=runner \
                         --compressed-caching=false \
                         --log-format=text \
                         --reproducible \
