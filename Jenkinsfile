@@ -2,6 +2,7 @@ pipeline {
     agent { label 'kaniko'}
 
     stages {
+
         stage('Build and push to registry') {
             steps {
                 container(name:'kaniko', shell: '/busybox/sh') {
@@ -20,9 +21,12 @@ pipeline {
                 }
             }
         }
+
         stage('Trigger ManifestUpdate') {
-            echo "triggering updatemanifestjob"
-            build job: 'update-manifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+            steps {
+                echo "triggering updatemanifestjob"
+                build job: 'update-manifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+            }
         }
     }
 
