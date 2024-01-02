@@ -11,7 +11,9 @@ pipeline {
         stage('Build and push to registry') {
             steps {
                 container(name:'kaniko', shell: '/busybox/sh') {
-                    sh """/kaniko/executor \
+                    sh """#!/busybox/sh
+
+                        /kaniko/executor \
                             --reproducible \
                             --ignore-path="/busybox" \
                             --cache=true \
@@ -26,5 +28,3 @@ pipeline {
         }
     }
 }
-
-// test
