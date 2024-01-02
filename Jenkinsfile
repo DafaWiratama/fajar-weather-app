@@ -2,6 +2,12 @@ pipeline {
     agent { label 'kaniko'}
 
     stages {
+        stage("Cleanup Workspace") {
+            steps {
+                cleanWs()
+            }
+        }
+
         stage('Build and push to registry') {
             steps {
                 container(name:'kaniko', shell: '/busybox/sh') {
