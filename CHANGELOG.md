@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/DafaWiratama/fajar-weather-app/compare/v0.1.1...v0.1.2) (2024-01-12)
+
+
+### Features
+
+* **weather:** update API endpoint paths for getCity and getWeather functions ([8fc0590](https://github.com/DafaWiratama/fajar-weather-app/commit/8fc0590aaaf639a40e7eb68b042fe53f1f9d8917))
+
 ### [0.1.1](https://github.com/DafaWiratama/fajar-weather-app/compare/v0.1.0...v0.1.1) (2024-01-12)
 
 
