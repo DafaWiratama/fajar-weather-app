@@ -16,7 +16,7 @@ pipeline {
                             --context `pwd` \
                             --dockerfile `pwd`/Dockerfile \
                             --use-new-run \
-                            --destination=https://harbor.jaya-makmur.cloud/fajar/weather-app:latest
+                            --destination=harbor.jaya-makmur.cloud/fajar/weather-app:latest
                     """
                 }
             }
