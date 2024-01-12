@@ -9,5 +9,5 @@ export const getCityApi = (city) => {
 
 export const getWeatherApi = (lat, lon) => {
   const url = `${host}/data/2.5/forecast1?lat=${lat}&lon=${lon}&units=metric&appid=${key}`;
-  return axios.get(url);
+  return axios.get(url);s
 };
