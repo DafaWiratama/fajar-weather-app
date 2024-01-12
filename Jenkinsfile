@@ -6,9 +6,11 @@ pipeline {
         stage("build & SonarQube analysis") {
             agent any
             steps {
-                def scannerHome = tool 'sonarscan';
-                withSonarQubeEnv('sonar.jaya-makmur.cloud') {
-                    sh "${scannerHome}/bin/sonar-scanner"
+                script {
+                    def scannerHome = tool 'sonarscan';
+                    withSonarQubeEnv('sonar.jaya-makmur.cloud') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
                 }
             }
         }
