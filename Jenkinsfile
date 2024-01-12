@@ -1,4 +1,5 @@
 pipeline {
+    agent { label 'kaniko'}
 
     stages {
 
@@ -14,7 +15,6 @@ pipeline {
         }
 
         stage('Build and push to registry') {
-            agent { label 'kaniko'}
             steps {
                 container(name:'kaniko', shell: '/busybox/sh') {
                     sh """#!/busybox/sh
