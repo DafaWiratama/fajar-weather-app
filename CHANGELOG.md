@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/DafaWiratama/fajar-weather-app/compare/v0.1.2...v0.2.0) (2024-01-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **weather:** `extends` key in config file is now used for extending other config files
+
+### Features
+
+* **weather:** update API endpoint paths for getCity and getWeather functions ([c0c3d45](https://github.com/DafaWiratama/fajar-weather-app/commit/c0c3d459dfface90cc3cbea0ba93f84c84247ff0))
+
 ### [0.1.2](https://github.com/DafaWiratama/fajar-weather-app/compare/v0.1.1...v0.1.2) (2024-01-12)
 
 
