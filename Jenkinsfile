@@ -6,7 +6,7 @@ pipeline {
         stage("build & SonarQube analysis") {
             steps {
                 script {
-                    def scannerHome = tool 'sonar_scanner';
+                    def scannerHome = tool 'sonar.jaya-makmur.cloud';
                     withSonarQubeEnv('sonar.jaya-makmur.cloud') {
                         sh "${scannerHome}/bin/sonar-scanner"
                     }
