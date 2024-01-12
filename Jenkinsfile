@@ -1,13 +1,11 @@
 pipeline {
-    agent { label 'kaniko'}
 
     stages {
 
         stage("build & SonarQube analysis") {
-            agent any
             steps {
                 script {
-                    def scannerHome = tool 'sonarscan';
+                    def scannerHome = tool 'sonar_scanner';
                     withSonarQubeEnv('sonar.jaya-makmur.cloud') {
                         sh "${scannerHome}/bin/sonar-scanner"
                     }
@@ -16,6 +14,7 @@ pipeline {
         }
 
         stage('Build and push to registry') {
+            agent { label 'kaniko'}
             steps {
                 container(name:'kaniko', shell: '/busybox/sh') {
                     sh """#!/busybox/sh
