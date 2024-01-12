@@ -3,12 +3,24 @@ pipeline {
 
     stages {
 
-        stage("build & SonarQube analysis") {
+        stage("SonarQube analysis") {
             steps {
                 script {
                     def scannerHome = tool 'SonarQube';
                     withSonarQubeEnv('sonar.jaya-makmur.cloud') {
                         sh "${scannerHome}/bin/sonar-scanner"
+                    }
+                }
+            }
+        }
+
+        stage("Quality gate") {
+            steps {
+                script {
+                    def qualitygate = waitForQualityGate()
+                    sleep(10)
+                    if (qualitygate.status != "OK") {
+                        waitForQualityGate abortPipeline: true
                     }
                 }
             }
