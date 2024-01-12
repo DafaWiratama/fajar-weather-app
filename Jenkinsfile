@@ -3,6 +3,15 @@ pipeline {
 
     stages {
 
+        stage("build & SonarQube analysis") {
+            agent any
+            steps {
+                withSonarQubeEnv('My SonarQube Server') {
+                    sh 'mvn clean package sonar:sonar'
+                }
+            }
+        }
+
         stage('Build and push to registry') {
             steps {
                 container(name:'kaniko', shell: '/busybox/sh') {
