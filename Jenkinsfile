@@ -7,7 +7,7 @@ pipeline {
             agent any
             steps {
                 withSonarQubeEnv('sonar.jaya-makmur.cloud') {
-                    sh 'mvn clean package sonar:sonar'
+                    sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
         }
