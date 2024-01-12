@@ -1,14 +1,26 @@
 pipeline {
     agent { label 'kaniko'}
 
+    environment {
+        GIT_REPO_NAME = ''
+    }
+
     stages {
+
+        stage("Initialize Properties") {
+            steps {
+                script {
+                    GIT_REPO_NAME = env.GIT_URL.tokenize('/')[-1].replace('.git', '')
+                }
+            }
+        }
 
         stage("SonarQube analysis") {
             steps {
                 script {
                     def scannerHome = tool 'SonarQube';
                     withSonarQubeEnv('sonar.jaya-makmur.cloud') {
-                        sh "${scannerHome}/bin/sonar-scanner"
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${GIT_REPO_NAME} -Dsonar.projectName=${GIT_REPO_NAME}"
                     }
                 }
             }
