@@ -1,6 +1,6 @@
 pipeline {
     agent { label 'kaniko'}
-    tools {nodejs "node_20"}
+    tools { nodejs "nodejs_20" }
 
     environment {
         GIT_REPO_NAME = ''
