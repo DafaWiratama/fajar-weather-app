@@ -1,5 +1,5 @@
 pipeline {
-    agent { node('any') }
+    agent { node('*') }
 
     environment {
         GIT_REPO_NAME = ''
