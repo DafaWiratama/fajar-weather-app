@@ -1,6 +1,5 @@
 pipeline {
-    agent { label 'kaniko'}
-    tools { nodejs "nodejs" }
+    agent any
 
     environment {
         GIT_REPO_NAME = ''
@@ -8,13 +7,14 @@ pipeline {
 
     stages {
 
-//         stage("Initialize Properties") {
-//             steps {
-//                 script {
-//                     GIT_REPO_NAME = env.GIT_URL.tokenize('/')[-1].replace('.git', '')
-//                 }
-//             }
-//         }
+        stage("Initialize Properties") {
+            tools { nodejs "nodejs" }
+            steps {
+                script {
+                    GIT_REPO_NAME = env.GIT_URL.tokenize('/')[-1].replace('.git', '')
+                }
+            }
+        }
 //
 //         stage("SonarQube analysis") {
 //             steps {
