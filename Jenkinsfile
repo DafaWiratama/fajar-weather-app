@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        node { label 'master' }
-    }
+    agent { node any }
 
     environment {
         GIT_REPO_NAME = ''
