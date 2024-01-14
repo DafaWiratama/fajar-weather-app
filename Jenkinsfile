@@ -1,6 +1,6 @@
 pipeline {
     agent { label 'kaniko'}
-//     tools { nodejs "nodejs" }
+    tools { nodejs "nodejs" }
 
     environment {
         GIT_REPO_NAME = ''
@@ -40,6 +40,7 @@ pipeline {
 //         }
 
         stage('Build and push to registry') {
+            agent { label 'kaniko'}
             steps {
                 container(name:'kaniko', shell: '/busybox/sh') {
                     sh """#!/busybox/sh
