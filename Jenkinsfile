@@ -37,25 +37,25 @@ pipeline {
             }
         }
 
-//         stage('Build and push to registry') {
-//             agent { label 'kaniko'}
-//             steps {
-//                 container(name:'kaniko', shell: '/busybox/sh') {
-//                     sh """#!/busybox/sh
-//
-//                         /kaniko/executor \
-//                             --reproducible \
-//                             --ignore-path="/busybox" \
-//                             --cache=true \
-//                             --log-format=text \
-//                             --context `pwd` \
-//                             --dockerfile `pwd`/Dockerfile \
-//                             --use-new-run \
-//                             --destination=harbor.jaya-makmur.cloud/fajar/weather-app
-//                     """
-//                 }
-//             }
-//         }
+        stage('Build and push to registry') {
+            agent { label 'kaniko'}
+            steps {
+                container(name:'kaniko', shell: '/busybox/sh') {
+                    sh """#!/busybox/sh
+
+                        /kaniko/executor \
+                            --reproducible \
+                            --ignore-path="/busybox" \
+                            --cache=true \
+                            --log-format=text \
+                            --context `pwd` \
+                            --dockerfile `pwd`/Dockerfile \
+                            --use-new-run \
+                            --destination=harbor.jaya-makmur.cloud/fajar/weather-app
+                    """
+                }
+            }
+        }
 
 //         stage('Trigger ManifestUpdate') {
 //             steps {
