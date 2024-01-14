@@ -17,8 +17,9 @@ pipeline {
         }
 
         stage("SonarQube analysis") {
+            tools { nodejs "nodejs" }
+
             steps {
-                tools { nodejs "nodejs" }
                 script {
                     def scannerHome = tool 'SonarScanner';
                     withSonarQubeEnv('sonar.jaya-makmur.cloud') {
