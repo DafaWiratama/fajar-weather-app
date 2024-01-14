@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        node { label 'master' }
+    }
 
     environment {
         GIT_REPO_NAME = ''
@@ -8,36 +10,35 @@ pipeline {
     stages {
 
         stage("Initialize Properties") {
-            tools { nodejs "nodejs" }
             steps {
                 script {
                     GIT_REPO_NAME = env.GIT_URL.tokenize('/')[-1].replace('.git', '')
                 }
             }
         }
-//
-//         stage("SonarQube analysis") {
-//             steps {
-//                 script {
-//                     def scannerHome = tool 'SonarScanner';
-//                     withSonarQubeEnv('sonar.jaya-makmur.cloud') {
-//                         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${GIT_REPO_NAME} -Dsonar.projectName=${GIT_REPO_NAME}"
-//                     }
-//                 }
-//             }
-//         }
-//
-//         stage("Quality gate") {
-//             steps {
-//                 script {
-//                     def qualitygate = waitForQualityGate()
-//                     sleep(10)
-//                     if (qualitygate.status != "OK") {
-//                         waitForQualityGate abortPipeline: true
-//                     }
-//                 }
-//             }
-//         }
+
+        stage("SonarQube analysis") {
+            steps {
+                script {
+                    def scannerHome = tool 'SonarScanner';
+                    withSonarQubeEnv('sonar.jaya-makmur.cloud') {
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${GIT_REPO_NAME} -Dsonar.projectName=${GIT_REPO_NAME}"
+                    }
+                }
+            }
+        }
+
+        stage("Quality gate") {
+            steps {
+                script {
+                    def qualitygate = waitForQualityGate()
+                    sleep(10)
+                    if (qualitygate.status != "OK") {
+                        waitForQualityGate abortPipeline: true
+                    }
+                }
+            }
+        }
 
         stage('Build and push to registry') {
             agent { label 'kaniko'}
