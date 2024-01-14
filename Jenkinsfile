@@ -19,7 +19,7 @@ pipeline {
         stage("SonarQube analysis") {
             steps {
                 script {
-                    def scannerHome = tool 'SonarQube';
+                    def scannerHome = tool 'SonarScanner';
                     withSonarQubeEnv('sonar.jaya-makmur.cloud') {
                         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${GIT_REPO_NAME} -Dsonar.projectName=${GIT_REPO_NAME}"
                     }
