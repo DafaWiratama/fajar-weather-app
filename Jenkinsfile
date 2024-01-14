@@ -56,7 +56,7 @@ pipeline {
                 }
             }
         }
-
+//
 //         stage('Trigger ManifestUpdate') {
 //             steps {
 //                 echo "triggering updatemanifestjob"
