@@ -1,6 +1,7 @@
 pipeline {
     agent { node { label 'master' } }
 
+
     environment {
         GIT_REPO_NAME = ''
     }
@@ -17,6 +18,7 @@ pipeline {
 
         stage("SonarQube analysis") {
             steps {
+                tools { nodejs "nodejs" }
                 script {
                     def scannerHome = tool 'SonarScanner';
                     withSonarQubeEnv('sonar.jaya-makmur.cloud') {
